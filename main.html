@@ -43,6 +43,24 @@
 
     <ul></ul>
 
-    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./script.js">
+		function sortBandNames(names) {
+  const articles = ['a', 'an', 'the'];
+  return names.sort((a, b) => {
+    const nameA = a.replace(/^(a |an |the )/i, '').toLowerCase();
+    const nameB = b.replace(/^(a |an |the )/i, '').toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+}
+
+const sortedBandNames = sortBandNames(bandNames);
+
+const ulElement = document.getElementById('band');
+sortedBandNames.forEach((bandName) => {
+  const liElement = document.createElement('li');
+  liElement.textContent = bandName;
+  ulElement.appendChild(liElement);
+});
+	</script>
   </body>
 </html>
